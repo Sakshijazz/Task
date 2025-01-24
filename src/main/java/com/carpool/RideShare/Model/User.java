@@ -1,14 +1,20 @@
 package com.carpool.RideShare.Model;
+
 import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="user")
+@Document(collection = "user")
 public class User {
+
     @Id
     protected int id;
+
     protected String name;
+
     protected String email;
+
     protected String password;
+
     protected String role;
 
     public User(int id, String name, String email, String password, String role) {
