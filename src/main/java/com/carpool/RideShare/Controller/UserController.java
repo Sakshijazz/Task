@@ -26,6 +26,7 @@ public class UserController {
     @Operation(summary = "Get user by ID",
             description = "Retrieves detailed user information")
     public User getUser( @PathVariable int id) {
+
         return userService.getUserById(id);
     }
 }
