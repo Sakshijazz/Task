@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RideService {
 
@@ -45,5 +47,21 @@ public class RideService {
         logger.info("Ride request saved: {}", savedRide);
 
         return savedRide;
+    }
+
+    public Ride acceptRide(Integer id) {
+        Ride ride = rideRepository.getRidesById(id);
+        logger.info("Accepting ride request: {}", ride);
+        if (ride.getStatus().equals("Requested")) {
+            ride.setStatus("Accepted");
+        }
+        Ride acceptedRide = rideRepository.save(ride);
+        logger.info("Ride request accepted: {}", acceptedRide);
+
+        return acceptedRide;
+    }
+
+    public List<Ride> getRides() {
+        return rideRepository.findAll();
     }
 }

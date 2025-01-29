@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RideRepository extends MongoRepository<Ride, String> {
 
+    Ride getRidesById(Integer id);
 }
